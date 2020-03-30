@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ProductRepositoryWithoutAop {
+public class ProductRepositoryWithoutAop implements ProductRepository {
 
     private SessionFactory sessionFactory;
 
@@ -21,7 +21,7 @@ public class ProductRepositoryWithoutAop {
 
     private static final String GET_ALL_PRODUCTS_QUERY = "SELECT p FROM Product p";
 
-    public List<Product> getProducts() {
+    public List<Product> findAll() {
         List<Product> products = new ArrayList<>();
         Session session = null;
         Transaction transaction = null;
@@ -49,7 +49,7 @@ public class ProductRepositoryWithoutAop {
         return products;
     }
 
-    public Product getProduct(Long id) {
+    public Product findById(Long id) {
         Product product = null;
         Session session = null;
         Transaction transaction = null;
@@ -75,7 +75,7 @@ public class ProductRepositoryWithoutAop {
         return product;
     }
 
-    public void saveProduct(Product product) {
+    public void save(Product product) {
         Session session = null;
         Transaction transaction = null;
 
